@@ -21,6 +21,14 @@ get_header(); ?>
 			'orderby'	=> 'menu_order'
 		);?>
 		<?php $pageloops = new WP_Query($args);?>
+		
+		<?php 
+				global $i;
+				global $howmuchpages;
+				$howmuchpages = $pageloops->post_count; 
+				$i = 1;
+		?>
+
 		<?php if ( $pageloops->have_posts() ) : while ( $pageloops->have_posts() ) : $pageloops->the_post(); ?>
 		<!-- post -->
 			
@@ -35,6 +43,7 @@ get_header(); ?>
 
 			?>
 
+			 <?php $i = $i +1;?>
 
 
 

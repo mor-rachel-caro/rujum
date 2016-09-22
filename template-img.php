@@ -7,7 +7,7 @@
  * @since Twenty Fourteen 1.0
  */
 ?>
-<section id=photos data-anchor=looks data-text=blue>
+<section id=photos data-anchor=looks data-text=blue style="width:100%;">
     <div class=container-fluid>
         <!-- big screens -->
         <div class="col-md-10 col-md-offset-1 hidden-xs">

@@ -12,7 +12,7 @@
  * @package rujum
  */
 ?>
-<section id=what data-bg=red data-anchor=<?php the_ID();?>>
+<section id=<?php the_field('section_id');?> data-bg=red data-anchor=<?php the_ID();?>>
     <div class=container-fluid>
         <div class="col-md-10 col-md-offset-1">
             <h3 class="text-center wow fadeInDownBig strip">
@@ -23,16 +23,33 @@
             <p class="text-center wow slideInRight">
 	           	<?php the_content();?>
            	</p>
-             <div class="socials text-left">
-                <a href=mailto:rujumprogram@gmail.com> <i class="fa fa-envelope fa-2x wow slideInUp" aria-hidden=true></i> </a>
-                <!-- <a href=""> -->
-                <!-- <i class="fa fa-instagram fa-2x wow slideInUp" data-wow-delay=".1s" aria-hidden="true"></i> -->
-                <!-- </a> -->
-                <a href="https://www.facebook.com/rujumprogram/"> <i class="fa fa-facebook-official fa-2x wow slideInUp" data-wow-delay=.3s aria-hidden=true></i> </a>
-                <a href=callto:+972-546738620> <i class="fa fa-phone fa-2x wow slideInUp" data-wow-delay=.4s aria-hidden=true></i> </a>
-            </div>
+             
         </div>
     </div>
+
+
+             <?php   global $i; global $howmuchpages;
+              if ($i== $howmuchpages) {?>
+                <footer>
+        <div class="col-md-2 col-xs-6 text-right">
+            <a href="http://www.drorisrael.org.il/"><img src=images/92798d6b.drorisraellogo.png alt="דרור ישראל"></a>
+        </div>
+        <div class="col-md-2 col-xs-6 text-right">
+            <a href=""><img src=images/2dc97494.moishe.png alt="מושיה האוס"></a>
+        </div>
+        <div class="col-md-2 col-xs-6 pull-left">
+            <div class=row>
+                <div class="col-md-5 col-xs-6">
+                    <a href=""><img src=images/e38ae585.havuralogo.jpg alt="החבורה עיצוב גראפי"></a>
+                </div>
+                <div class="col-md-5 col-xs-6">
+                    <a href=""><img src=images/28870b1a.divalogo.png alt="דיווה עיצוב ובניית אתרים"></a>
+                </div>
+            </div>
+        </div>
+</footer>
+<?php } ?>
+
 </section>
 
 
