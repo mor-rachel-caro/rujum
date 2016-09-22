@@ -37,19 +37,18 @@
 					<span class="icon-bar"></span> 
 					<span class="icon-bar"></span> 
 				</button> 
-				<!-- problemmmmmmmm -->
-				<?php $args = array(
+				<!-- get the pages with page template and echo its title -->
+				<?php $template_args = array(
 				    'post_type' => 'page',
 				    'fields' => 'ids',
 				    // 'nopaging' => true,
 				    'meta_key' => '_wp_page_template',
 				    'meta_value' => 'template-first-page.php'
 				);
-				$pages = get_posts( $args );
-				foreach ( $pages as $page ){?>
+				$array_of_firstpage_template = get_posts( $template_args );
+				foreach ( $array_of_firstpage_template as $page_id ){?>
 					
-					<a class="navbar-brand" href="#home"><?php echo get_the_title($page);?></a> 
-					
+					<a class="navbar-brand" href="#home"><?php echo get_the_title($page_id);?></a> 
 				<?php }?>
 
 			</div> <!-- Collect the nav links, forms, and other content for toggling --> 
@@ -58,17 +57,27 @@
 					<?php $args = array(
 						'post_type' => 'page', 
 						'order' => 'ASC',
-						'orderby'	=> 'menu_order'
+						'orderby'	=> 'menu_order',
+						'meta_query' => array(
+							array(
+								'key'	=> '_wp_page_template',
+								'value'	=> 'template-first-page.php',
+								'compare'	=> '!='
+							) 
+						)
 					);?>
 					<?php $pageloops = new WP_Query($args);?>
 					<?php if ( $pageloops->have_posts() ) : while ( $pageloops->have_posts() ) : $pageloops->the_post(); ?>
-					<!-- post -->
+
+						<!-- only not first page -->
+							<li>
+								<a href="#<?php the_ID();?>"><?php the_title();?>
+									<span class="sr-only"></span>
+								</a>
+							</li>
+						
+						
 						     
-						<li>
-							<a href="#<?php the_ID();?>"><?php the_title();?>
-								<span class="sr-only"></span>
-							</a>
-						</li>
 
 					<?php endwhile; ?>
 					<!-- post navigation -->
