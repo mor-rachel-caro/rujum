@@ -42,7 +42,11 @@
 			</div> <!-- Collect the nav links, forms, and other content for toggling --> 
 			<div class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1"> 
 				<ul class="nav navbar-nav">
-					<?php $args = array ('post_type' => 'page');?>
+					<?php $args = array(
+						'post_type' => 'page', 
+						'order' => 'ASC',
+						'orderby'	=> 'menu_order'
+					);?>
 					<?php $pageloops = new WP_Query($args);?>
 					<?php if ( $pageloops->have_posts() ) : while ( $pageloops->have_posts() ) : $pageloops->the_post(); ?>
 					<!-- post -->
@@ -59,8 +63,8 @@
 					<?php else: ?>
 					<!-- no posts found -->
 					<?php endif; ?>
-		
-					
+					<?php wp_reset_postdata(); ?>
+
 				</ul> 
 			</div><!-- /.navbar-collapse --> 
 		</div><!-- /.container-fluid --> 

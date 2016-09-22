@@ -15,7 +15,11 @@
 get_header(); ?>
 
     <!-- PAGE LOOP -->
-		<?php $args = array ('post_type' => 'page');?>
+		<?php $args = array(
+			'post_type' => 'page', 
+			'order' => 'ASC',
+			'orderby'	=> 'menu_order'
+		);?>
 		<?php $pageloops = new WP_Query($args);?>
 		<?php if ( $pageloops->have_posts() ) : while ( $pageloops->have_posts() ) : $pageloops->the_post(); ?>
 		<!-- post -->
@@ -32,8 +36,6 @@ get_header(); ?>
 			?>
 
 
-<?php get_header(); ?>
-
 
 
 
@@ -43,7 +45,10 @@ get_header(); ?>
 		<?php else: ?>
 		<!-- no posts found -->
 		<?php endif; ?>
+		<?php wp_reset_postdata(); ?>
+
   
 		<?php 
 		
 get_footer();
+?>

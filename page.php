@@ -24,13 +24,13 @@
 	           	<?php the_content();?>
            	</p>
              <div class="socials text-left">
-                                <a href=mailto:rujumprogram@gmail.com> <i class="fa fa-envelope fa-2x wow slideInUp" aria-hidden=true></i> </a>
-                                <!-- <a href=""> -->
-                                <!-- <i class="fa fa-instagram fa-2x wow slideInUp" data-wow-delay=".1s" aria-hidden="true"></i> -->
-                                <!-- </a> -->
-                                <a href="https://www.facebook.com/rujumprogram/"> <i class="fa fa-facebook-official fa-2x wow slideInUp" data-wow-delay=.3s aria-hidden=true></i> </a>
-                                <a href=callto:+972-546738620> <i class="fa fa-phone fa-2x wow slideInUp" data-wow-delay=.4s aria-hidden=true></i> </a>
-                            </div>
+                <a href=mailto:rujumprogram@gmail.com> <i class="fa fa-envelope fa-2x wow slideInUp" aria-hidden=true></i> </a>
+                <!-- <a href=""> -->
+                <!-- <i class="fa fa-instagram fa-2x wow slideInUp" data-wow-delay=".1s" aria-hidden="true"></i> -->
+                <!-- </a> -->
+                <a href="https://www.facebook.com/rujumprogram/"> <i class="fa fa-facebook-official fa-2x wow slideInUp" data-wow-delay=.3s aria-hidden=true></i> </a>
+                <a href=callto:+972-546738620> <i class="fa fa-phone fa-2x wow slideInUp" data-wow-delay=.4s aria-hidden=true></i> </a>
+            </div>
         </div>
     </div>
 </section>
