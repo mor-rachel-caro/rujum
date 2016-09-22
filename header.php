@@ -38,7 +38,20 @@
 					<span class="icon-bar"></span> 
 				</button> 
 				<!-- problemmmmmmmm -->
-				<a class="navbar-brand" href="#20"></a><?php echo get_the_title(20);?></a> 
+				<?php $args = array(
+				    'post_type' => 'page',
+				    'fields' => 'ids',
+				    // 'nopaging' => true,
+				    'meta_key' => '_wp_page_template',
+				    'meta_value' => 'template-first-page.php'
+				);
+				$pages = get_posts( $args );
+				foreach ( $pages as $page ){?>
+					
+					<a class="navbar-brand" href="#home"><?php echo get_the_title($page);?></a> 
+					
+				<?php }?>
+
 			</div> <!-- Collect the nav links, forms, and other content for toggling --> 
 			<div class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1"> 
 				<ul class="nav navbar-nav">
@@ -57,7 +70,6 @@
 							</a>
 						</li>
 
-						</div> 
 					<?php endwhile; ?>
 					<!-- post navigation -->
 					<?php else: ?>
