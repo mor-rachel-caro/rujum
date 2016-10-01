@@ -28,26 +28,26 @@
     </div>
 
 
-             <?php   global $i; global $howmuchpages;
-              if ($i== $howmuchpages) {?>
-                <footer>
+ <?php   global $i; global $howmuchpages;
+  if ($i== $howmuchpages) {?>
+    <footer>
         <div class="col-md-2 col-xs-6 text-right">
-            <a href="http://www.drorisrael.org.il/"><img src=images/92798d6b.drorisraellogo.png alt="דרור ישראל"></a>
+            <a href="http://www.drorisrael.org.il/"><img src=<?php echo get_template_directory_uri();?>/images/92798d6b.drorisraellogo.png alt="דרור ישראל"></a>
         </div>
         <div class="col-md-2 col-xs-6 text-right">
-            <a href=""><img src=images/2dc97494.moishe.png alt="מושיה האוס"></a>
+            <a href=""><img src=<?php echo get_template_directory_uri();?>/images/2dc97494.moishe.png alt="מושיה האוס"></a>
         </div>
         <div class="col-md-2 col-xs-6 pull-left">
             <div class=row>
                 <div class="col-md-5 col-xs-6">
-                    <a href=""><img src=images/e38ae585.havuralogo.jpg alt="החבורה עיצוב גראפי"></a>
+                    <a href=""><img src=<?php echo get_template_directory_uri();?>/images/e38ae585.havuralogo.jpg alt="החבורה עיצוב גראפי"></a>
                 </div>
                 <div class="col-md-5 col-xs-6">
-                    <a href=""><img src=images/28870b1a.divalogo.png alt="דיווה עיצוב ובניית אתרים"></a>
+                    <a href=""><img src="<?php echo get_template_directory_uri();?>/images/28870b1a.divalogo.png" alt="דיווה עיצוב ובניית אתרים"></a>
                 </div>
             </div>
         </div>
-</footer>
+    </footer>
 <?php } ?>
 
 </section>

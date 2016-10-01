@@ -106,7 +106,12 @@ function rujum_scripts() {
 	
 	wp_enqueue_style( 'main',  get_template_directory_uri() . '/styles/2824c495.main.css' );
 	
-	wp_enqueue_style( 'vendor',  get_template_directory_uri() . '/styles/4b130b20.vendor.css' );
+	wp_enqueue_style( 'vendor',  get_template_directory_uri() . '/
+		styles/4b130b20.vendor.css' );
+	
+	wp_enqueue_script( 'vendor.js', get_template_directory_uri() . '/js/6f7d3e74.vendor.js', array(), '20151215', true );
+
+	wp_enqueue_script( 'main.js', get_template_directory_uri() . '/js/77ffafe9.main.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'rujum-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
