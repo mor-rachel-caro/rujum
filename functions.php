@@ -150,3 +150,17 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 add_filter('show_admin_bar', '__return_false');
+
+
+
+// replace cf7 form submit with button
+function fowl_wpcf7_submit_button() {
+    if(function_exists('wpcf7_remove_shortcode')) {
+            wpcf7_remove_shortcode('submit');
+            remove_action( 'admin_init', 'wpcf7_add_tag_generator_submit', 55 );
+            require_once get_template_directory() . '/cf7/submit.php';
+    }
+}
+add_action('init','fowl_wpcf7_submit_button');
+
+
