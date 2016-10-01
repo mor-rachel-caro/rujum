@@ -71,7 +71,7 @@
 
 						<!-- only not first page -->
 							<li>
-								<a href="#<?php the_ID();?>"><?php the_title();?>
+								<a href="#<?php the_field('section_id');?>"><?php the_title();?>
 									<span class="sr-only"></span>
 								</a>
 							</li>
