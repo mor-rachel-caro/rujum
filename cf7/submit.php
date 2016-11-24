@@ -5,10 +5,10 @@
 
 /* Shortcode handler */
 
-add_action( 'wpcf7_init', 'wpcf7_add_shortcode_submit' );
+add_action( 'wpcf7_init', 'fowl_wpcf7_add_tag_generator_submit' );
 
-function fowl_wpcf7_add_shortcode_submit() {
-	wpcf7_add_shortcode( 'submit', 'wpcf7_submit_shortcode_handler' );
+function fowl_wpcf7_add_tag_generator_submit() {
+	wpcf7_add_shortcode( 'submit', 'fowl_wpcf7_submit_shortcode_handler' );
 }
 
 function fowl_wpcf7_submit_shortcode_handler( $tag ) {
@@ -19,37 +19,36 @@ function fowl_wpcf7_submit_shortcode_handler( $tag ) {
 	$atts = array();
 
 	$atts['class'] = $tag->get_class_option( $class );
+	$atts['class'] .= 'btn btn-default col-xs-12';
 	$atts['id'] = $tag->get_id_option();
 	$atts['tabindex'] = $tag->get_option( 'tabindex', 'int', true );
 
 	$value = isset( $tag->values[0] ) ? $tag->values[0] : '';
-
 	if ( empty( $value ) )
-		$value = __( 'Send', 'contact-form-7' );
+		$value = __( '<p class="big">שלח/י</p>ונחזור אליך בהקדם<p></p>', 'contact-form-7' );
 
-	$atts['type'] = 'submit';
-	$atts['value'] = $value;
+	// $atts['type'] = 'submit';
+	// $atts['value'] = $value;
 
 	$atts = wpcf7_format_atts( $atts );
 
-	// $html = sprintf( '<button %1$s>', $atts, '</button>' );
-	$html = '<button type="submit"' . $atts . '>' . esc_attr( $value ) .  '</button>';
-
+	// $html = sprintf( '<input %1$s />', $atts );
+	$html = '<button type="submit"' . $atts . '>' . $value .  '</button>';
 	return $html;
 }
 
 
 /* Tag generator */
 
-add_action( 'wpcf7_admin_init', 'wpcf7_add_tag_generator_submit', 55 );
+add_action( 'wpcf7_admin_init', 'fowl_wpcf7_add_tag_generator_submit_a', 55 );
 
-function fowl_wpcf7_add_tag_generator_submit() {
+function fowl_wpcf7_add_tag_generator_submit_a() {
 	$tag_generator = WPCF7_TagGenerator::get_instance();
 	$tag_generator->add( 'submit', __( 'submit', 'contact-form-7' ),
-		'wpcf7_tag_generator_submit', array( 'nameless' => 1 ) );
+		'wpcf7_tag_generator_submit_a', array( 'nameless' => 1 ) );
 }
 
-function fowl_wpcf7_tag_generator_submit( $contact_form, $args = '' ) {
+function wpcf7_tag_generator_submit_a( $contact_form, $args = '' ) {
 	$args = wp_parse_args( $args, array() );
 
 	$description = __( "Generate a form-tag for a submit button. For more details, see %s.", 'contact-form-7' );
@@ -90,5 +89,4 @@ function fowl_wpcf7_tag_generator_submit( $contact_form, $args = '' ) {
 	<input type="button" class="button button-primary insert-tag" value="<?php echo esc_attr( __( 'Insert Tag', 'contact-form-7' ) ); ?>" />
 	</div>
 </div>
-<?php
-}
+<?php }
