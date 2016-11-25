@@ -12,7 +12,7 @@
  * @package rujum
  */
 ?>
-<section id=<?php the_field('section_id');?> data-bg=red data-anchor=<?php the_ID();?>>
+<section id=<?php the_field('section_id');?> data-bg=red data-anchor="<?php the_field('section_id');?>">
     <div class=container-fluid>
         <div class="col-md-10 col-md-offset-1">
             <h3 class="text-center wow fadeInDownBig strip">

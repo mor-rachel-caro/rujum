@@ -1,1 +1,137 @@
-$(document).ready(function(){var a=$(".navbar-fixed-top").height()+15,b=$(".navbar-fixed-top li");if($(window).width()<768){$("#fullpage").find("section,header").css({"min-height":"100vh",height:"auto","padding-bottom":"100px","padding-top":a.toString()+"px",position:"relative"});var c=[];$("section,header").each(function(a,b){c[a]={name:$(b).data("anchor"),top:$(b).offset().top,bottom:$(b).offset().top+$(b).outerHeight(!0)}}),$(".nextsection").hide(),$(".nav a").click(function(a){a.preventDefault(),$("#bs-example-navbar-collapse-1").collapse("hide");var b=$(a.currentTarget).attr("href");c.forEach(function(a){console.log("#"+a.name),"#"+a.name==b&&$(window).scrollTop(a.top)})})}else $("#fullpage").fullpage({fixedElements:".navbar-fixed-top, .nextsection",sectionSelector:"section,header",verticalCentered:!0,paddingTop:a.toString()+"px",paddingBottom:"20px",responsiveHeight:!0,scrollBar:!0,css3:!0,scrollingSpeed:700,autoScrolling:!0,fitToSection:!0,fitToSectionDelay:1e3,normalScrollElements:"#whoarewe",scrollOverflow:!1,scrollOverflowOptions:null,touchSensitivity:15,normalScrollElementTouchThreshold:5,onLeave:function(a,c,d){var e="white",f=$("section, header").eq(c-1);switch(f.data("text")){case"blue":e="#475472";break;case"orange":e="#f26522";break;case"purple":e="#9f1e63";break;default:e="white"}$(".nextsection i").css({color:e,"border-color":e}),"interested"==f.data("anchor")?$(".nextsection").addClass("upside"):$(".nextsection").removeClass("upside"),1===a&&$(".navbar-fixed-top").addClass("outside"),1===c&&$(".navbar-fixed-top").removeClass("outside"),b.eq(a-1).addClass("active").siblings().removeClass("active")},afterLoad:function(a,b){},afterRender:function(){(new WOW).init()},afterResize:function(){}}),$(".nextsection i").on("click",function(a){a.preventDefault(),$(a.currentTarget).parents(".nextsection").hasClass("upside")?($.fn.fullpage.moveTo(1),$(a.currentTarget).parents(".nextsection").removeClass("upside")):$.fn.fullpage.moveSectionDown()});var d=$("form#email_form");$(d).on("submit",function(a){a.preventDefault();var b=$(this).find("button").html();console.log($(d).serialize()),$.ajax({type:"POST",url:$(d).attr("action"),data:$(d).serialize(),cache:!1}).always(function(a,b,c){$(d).find("button").html('<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span>')}).done(function(a){$("#mailnotification").modal("toggle"),$("#mailnotification").find(".modal-body").append("<h1>אחלה</h1>"),$("#mailnotification").on("hidden.bs.modal",function(){$(this).find("h1, h2").remove()}),$("#fullName").val(""),$("#email").val(""),$("#phonenumber").val(""),$("#placeFrom").val(""),$(d).find("button").html(b)}).fail(function(a,c,e){console.log(e),console.log(a),console.log(c),console.log(a.textStatus),"1"===a.responseText?($("#mailnotification").modal("toggle"),$("#mailnotification").find(".modal-body").append("<h1>אחלה</h1>"),$("#mailnotification").on("hidden.bs.modal",function(){$(this).find("h1, h2").remove()}),$("#fullName").val(""),$("#email").val(""),$("#phonenumber").val(""),$("#placeFrom").val("")):($("#mailnotification").modal("toggle"),$("#mailnotification").find(".modal-body").append('<h1 class="text-center">אוי מביך</h1><h2 class="text-center">יש בעיה כרגע בשליחה</h2>'),$("#mailnotification").on("hidden.bs.modal",function(){$(this).find("h1, h2").remove()})),$(d).find("button").html(b)})})});
+$(document).ready(function() {
+    var navhighet = $('.navbar-fixed-top').height() + 15,
+        navli = $('.navbar-fixed-top li');
+    
+    if ($(window).width() < 768) {
+        //close nav on clicking menu
+        // new WOW().init();
+      
+        $('#fullpage').find('section,header').css({
+            'min-height': '100vh',
+            'height': 'auto',
+            'padding-bottom' : '100px',
+            'padding-top' : navhighet.toString() + 'px',
+            'position' : 'relative'
+        });
+
+        
+        $('.nextsection').hide();
+        
+        // $('.nextsection i').on('click', function(event){
+        //     console.log(sections);
+        //     event.preventDefault();
+        //     var i;
+        //     sections.forEach(function(item) {
+        //         var pos = window.pageYOffset;
+        //         console.log(i);
+        //         console.log(pos);
+        //         if (pos <= item.top && pos < item.bottom ) {
+        //             console.log(item.name);
+        //             i = item.top;
+        //         }
+        //         return $(window).scrollTop(i);
+        //     });
+        // });
+
+    }else{
+        $('#fullpage').fullpage({
+            fixedElements: '.navbar-fixed-top, .nextsection',
+            sectionSelector: 'section,header',
+            verticalCentered: true,
+            paddingTop: navhighet.toString() + 'px',
+            paddingBottom: '20px',
+            responsiveHeight: true,
+            scrollBar: true,
+            //Scrolling
+            css3: true,
+            scrollingSpeed: 700,
+            autoScrolling: true,
+            fitToSection: true,
+            fitToSectionDelay: 1000,
+            normalScrollElements: '#whoarewe',
+            scrollOverflow:false,
+            scrollOverflowOptions: null,
+            touchSensitivity: 15,
+            normalScrollElementTouchThreshold: 5,
+
+            //events
+            onLeave: function(index, nextIndex, direction){
+                //changing arrow color
+                var color = 'white',
+                    sectionobj = $('section, header').eq(nextIndex - 1);
+                switch(sectionobj.data('text')) {
+                    case 'blue':
+                        color = '#475472';
+                        break;
+                    case 'orange':
+                        color = '#f26522';
+                        break;
+                    case 'purple':
+                        color = '#9f1e63';
+                        break;
+                    default:
+                        color = 'white';
+                }
+                $('.nextsection i').css({
+                    color: color,
+                    'border-color': color
+                });
+
+                //changing arrow when reacing bottom     
+                if(sectionobj.data('anchor') == 'interested'){
+                    $('.nextsection').addClass('upside');
+                }else{
+                    $('.nextsection').removeClass('upside');
+                }
+
+                //chnaging navigation colors
+                if(index === 1){
+                    $('.navbar-fixed-top').addClass('outside');
+                }
+                if( nextIndex === 1){
+                    $('.navbar-fixed-top').removeClass('outside');
+                }
+
+                navli.eq(index - 1).addClass('active').siblings().removeClass('active');
+            },
+            afterLoad: function(anchorLink, index){},
+            afterRender: function(){
+                new WOW().init();
+            },
+            afterResize: function(){},
+        });
+        $('.nextsection i').on('click', function(event) {
+            event.preventDefault();
+            if ($(event.currentTarget).parents('.nextsection').hasClass('upside')) {
+                $.fn.fullpage.moveTo(1);
+                $(event.currentTarget).parents('.nextsection').removeClass('upside');
+            }else{
+                $.fn.fullpage.moveSectionDown();
+            }
+        });
+    }
+
+    //nav and nextsection functionality
+    var sections = [];
+    $('section,header').each(function(index, el) {
+        sections[index] = {
+            name : $(el).data('anchor'),
+            top : $(el).offset().top,
+            bottom: $(el).offset().top + $(el).outerHeight(true)
+        }
+    });
+
+    $('.nav a').click(function(event){
+        event.preventDefault();
+        $('#bs-example-navbar-collapse-1').collapse('hide');
+        var href = $(event.currentTarget).attr('href');
+        console.log(href);
+        sections.forEach(function(item) {
+            if ('#' + item.name == href) {
+                console.log('#' + item.name);
+                $(window).scrollTop(item.top);
+            }
+        });
+    });
+
+});
